@@ -53,12 +53,10 @@ export class ToyRobot {
     return x >= 0 && x < this.gridSize && y >= 0 && y < this.gridSize;
   }
 
-  // Method to rotate the robot to the left
   left(): void {
     this.rotate(true);
   }
 
-  // Method to rotate the robot to the right
   right(): void {
     this.rotate(false);
   }
