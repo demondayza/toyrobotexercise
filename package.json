@@ -1,0 +1,29 @@
+{
+  "name": "toyrobot",
+  "module": "./src/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run build && node build/index.js",
+    "start:dev": "bunx tsx ./src/index.ts",
+    "build": "rimraf ./build && tsc",
+    "tests": "bun test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.6.1",
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@types/node": "^20.11.27",
+    "@types/prompts": "^2.4.9",
+    "cli-table3": "^0.6.3",
+    "install": "^0.13.0",
+    "nodemon": "^3.1.0",
+    "prompts": "^2.4.2",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.2"
+  }
+}

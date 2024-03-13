@@ -1,0 +1,81 @@
+Toy Robot Simulator Test Cases
+Overview
+This document outlines a set of test cases designed to validate the functionality and robustness of the Toy Robot Simulator. These tests cover various scenarios, including valid movements, edge cases, and invalid commands.
+
+Test Cases
+Test Case 1: Valid Placement and Movement
+Input:
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+Expected Output: 3,3,NORTH
+Purpose: Tests basic placement, movement, and rotation.
+
+Test Case 2: Invalid Placement
+Input:
+PLACE 5,5,NORTH
+REPORT
+Expected Output: Error message about invalid placement (since the grid is 0-4 in both dimensions).
+Purpose: Ensures the application prevents placement outside the grid.
+
+
+Test Case 3: Movement Prevented at Edge
+Input:
+PLACE 0,0,SOUTH
+MOVE
+REPORT
+Expected Output: 0,0,SOUTH and potentially an error message indicating movement was prevented.
+Purpose: Tests that the robot doesn't move off the grid.
+
+Test Case 4: Ignoring Commands Before Valid PLACE
+Input:
+MOVE
+LEFT
+PLACE 0,0,NORTH
+REPORT
+Expected Output: 0,0,NORTH
+Purpose: Verifies that commands before a valid PLACE are ignored.
+
+Test Case 5: Sequential PLACE Commands
+Input:
+PLACE 0,0,NORTH
+MOVE
+PLACE 2,2,EAST
+MOVE
+REPORT
+Expected Output: 3,2,EAST
+Purpose: Checks that the robot can be re-placed on the grid and continues from the new position.
+
+Test Case 6: Rotation Logic
+Input:
+PLACE 1,1,EAST
+LEFT
+LEFT
+REPORT
+Expected Output: 1,1,WEST
+Purpose: Confirms correct rotation logic without changing position.
+
+
+Test Case 7: Complex Movement Around the Grid
+Input:
+PLACE 1,2,NORTH
+MOVE
+RIGHT
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+Expected Output: 3,4,NORTH
+Purpose: Tests a combination of movements and rotations that take the robot around different parts of the grid.
+
+Test Case 8: Exiting the Simulation
+Input:
+PLACE 0,0,NORTH
+MOVE
+EXIT
+Expected Output: Simulation ends after the MOVE command, before or after displaying the result of MOVE.
+Purpose: Ensures the EXIT command immediately ends the simulation.
