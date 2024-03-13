@@ -1,4 +1,4 @@
-# toyrobot
+# ToyRobot Exercise
 
 Requires the bun nodejs runtime available here: https://bun.sh/ (Note windows support limited outside of WSL for Bun)
 
