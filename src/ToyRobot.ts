@@ -6,9 +6,17 @@ export interface RobotState {
   y: number;
   facing: Direction;
 }
+export interface PotholeState {
+  x: number;
+  y: number;
+}
 
 export class ToyRobot {
   private state: RobotState | null = null;
+  private potholestate: PotholeState[] | null = [
+    { x: 2, y: 4 },
+    { x: 3, y: 3 },
+  ];
   private readonly gridSize: number = 5;
 
   place(x: number, y: number, facing: Direction): string {
@@ -45,12 +53,29 @@ export class ToyRobot {
     if (this.isValidPosition(newX, newY)) {
       this.state = { x: newX, y: newY, facing };
     } else {
-      console.error("Error: Move would take the robot off the grid.");
+      console.error(
+        "Error: Move would take the robot off the grid. Or you have landed on a pothole on the board"
+      );
     }
   }
 
   isValidPosition(x: number, y: number): boolean {
-    return x >= 0 && x < this.gridSize && y >= 0 && y < this.gridSize;
+    let potholecondition = false;
+    this.potholestate?.forEach((pothole) => {
+      console.log(pothole);
+      console.log(pothole.x === x && pothole.y === y);
+      if (pothole.x === x && pothole.y === y) {
+        potholecondition = true;
+      }
+    });
+
+    return (
+      x >= 0 &&
+      x < this.gridSize &&
+      y >= 0 &&
+      y < this.gridSize &&
+      potholecondition === false
+    );
   }
 
   left(): void {
